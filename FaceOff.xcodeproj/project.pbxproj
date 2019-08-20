@@ -12,6 +12,7 @@
 		06AF2FD0230B6A340020BA4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06AF2FCE230B6A340020BA4A /* Main.storyboard */; };
 		06AF2FD2230B6A3B0020BA4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06AF2FD1230B6A3B0020BA4A /* Assets.xcassets */; };
 		06AF2FD5230B6A3B0020BA4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06AF2FD3230B6A3B0020BA4A /* LaunchScreen.storyboard */; };
+		06AF2FDD230BB5500020BA4A /* coreml_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 06AF2FDC230BB5500020BA4A /* coreml_model.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		06AF2FD1230B6A3B0020BA4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06AF2FD4230B6A3B0020BA4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		06AF2FD6230B6A3B0020BA4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06AF2FDC230BB5500020BA4A /* coreml_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = coreml_model.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		06AF2FC9230B6A340020BA4A /* FaceOff */ = {
 			isa = PBXGroup;
 			children = (
+				06AF2FDC230BB5500020BA4A /* coreml_model.mlmodel */,
 				06AF2FCA230B6A340020BA4A /* AppDelegate.swift */,
 				06AF2FCC230B6A340020BA4A /* ViewController.swift */,
 				06AF2FCE230B6A340020BA4A /* Main.storyboard */,
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06AF2FDD230BB5500020BA4A /* coreml_model.mlmodel in Sources */,
 				06AF2FCD230B6A340020BA4A /* ViewController.swift in Sources */,
 				06AF2FCB230B6A340020BA4A /* AppDelegate.swift in Sources */,
 			);
