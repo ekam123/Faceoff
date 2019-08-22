@@ -7,59 +7,70 @@
 //
 
 import UIKit
+import AVFoundation
+import Vision
 
-class ViewController: UIViewController, UIPickerViewAccessibilityDelegate, UIPickerViewDelegate {
-
+class ViewController: UIViewController {
+    
+    private var scaledHeight: CGFloat!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        guard let image = UIImage(named: "b2049test") else {return}
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFit
+        scaledHeight = view.frame.width / image.size.width * image.size.height
+        imageView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: scaledHeight)
+        view.addSubview(imageView)
+        
+        let request = VNDetectFaceRectanglesRequest { (request, err) in
+            if let err = err {
+                print("Failed to detect any faces: ", err)
+            }
+            
+            request.results?.forEach({ (res) in
+                DispatchQueue.main.async {
+                    guard let faceObervation = res as? VNFaceObservation else {return}
+                    let redView = UIView()
+                    redView.backgroundColor = .red
+                    redView.frame = self.faceIdentificationBox(faceBoundary: faceObervation)
+                    redView.alpha = 0.3
+                    self.view.addSubview(redView)
+                    print(faceObervation.boundingBox)
+                    
+                    let touchGesture = UITapGestureRecognizer(target: self, action: #selector(self.onFaceSelected))
+                    redView.addGestureRecognizer(touchGesture)
+                }
+                
+                
+            })
+        }
+       
+        guard let cgImage = image.cgImage else {return}
+        DispatchQueue.global(qos: .background).async {
+            let handler = VNImageRequestHandler(cgImage: cgImage, options: [ : ])
+            do {
+                try handler.perform([request])
+            } catch let Err{
+                print("Failed to perform request:", Err)
+            }
+        }
+    
+
     }
     
-    guard UIImagePickerController.isSourceTypeAvailable(.camera) else
-    {
-    presentPhotoPicker(sourceType: .photoLibrary)
-    return
+    func faceIdentificationBox(faceBoundary: VNFaceObservation) -> CGRect {
+        let x = self.view.frame.width * faceBoundary.boundingBox.origin.x
+        let height = scaledHeight * faceBoundary.boundingBox.height
+        let y = scaledHeight * (1 - faceBoundary.boundingBox.origin.y) - height
+        let width = self.view.frame.width * faceBoundary.boundingBox.width
+        let boxDimensions = CGRect(x: x, y: y, width: width, height: height)
+        return boxDimensions
     }
     
-    let photoSourcePicker = UIAlertController()
-    let takePhoto = UIAlertAction(title: "Take Photo",
-                                  style: .default) { [unowned self] _ in
-                                    self.presentPhotoPicker(sourceType: .camera)
+    @objc func onFaceSelected(_ sender: UITapGestureRecognizer) {
+        print("I have been touched")
     }
-    let choosePhoto = UIAlertAction(title: "Choose Photo",
-                                    style: .default) { [unowned self] _ in
-                                        self.presentPhotoPicker(sourceType: .photoLibrary)
-    }
-    
-    photoSourcePicker.addAction(takePhoto)
-    photoSourcePicker.addAction(choosePhoto)
-    photoSourcePicker.addAction(UIAlertAction(title: "Cancel",
-    style: .cancel,
-    handler: nil))
-    
-    present(photoSourcePicker, animated: true)
-}
-
-func presentPhotoPicker(sourceType: UIImagePickerController.SourceType)
-{
-    let picker = UIImagePickerController()
-    picker.delegate = self
-    picker.sourceType = sourceType
-    present(picker, animated: true)
-}
-
-
-
-func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
-{
-    picker.dismiss(animated: true)
-    
-    // We always expect `imagePickerController(:didFinishPickingMediaWithInfo:)` to supply the original image.
-    let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-    imageView.image = image
-
-}
-
-
 }
 
