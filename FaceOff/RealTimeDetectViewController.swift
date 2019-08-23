@@ -12,6 +12,8 @@ import Vision
 
 class RealTimeDetectViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
+    var predictedObject: UILabel = UILabel()
+    
     private let captureSession = AVCaptureSession()
     private lazy var previewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession)
     private let videoDataOutput = AVCaptureVideoDataOutput()
@@ -28,6 +30,16 @@ class RealTimeDetectViewController: UIViewController, AVCaptureVideoDataOutputSa
         self.showCameraFeed()
         self.captureSession.startRunning()
         self.getCameraFrames()
+        
+        predictedObject.text = "Value"
+        predictedObject.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)
+        predictedObject.textAlignment = .center
+        predictedObject.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        predictedObject.frame = CGRect(x: view.frame.width / 2 , y: view.frame.height - 50, width: 100, height: 20)
+        view.addSubview(predictedObject)
+        
+
+        
     }
     
     
@@ -83,8 +95,18 @@ class RealTimeDetectViewController: UIViewController, AVCaptureVideoDataOutputSa
                 }
             }
         })
+        guard let model = try? VNCoreMLModel(for: Resnet50().model) else {return}
+        let imagePredictionRequest = VNCoreMLRequest(model: model) { (request, Err) in
+            DispatchQueue.main.async {
+                guard let results = request.results as? [VNClassificationObservation] else {return}
+                guard let firstObservation = results.first else {return}
+                print(firstObservation.identifier, firstObservation.confidence)
+                self.predictedObject.text = firstObservation.identifier
+            }
+           
+        }
         let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: image, orientation: .leftMirrored, options: [:])
-        try? imageRequestHandler.perform([faceDetectionRequest])
+        try? imageRequestHandler.perform([faceDetectionRequest, imagePredictionRequest ])
     }
     
     
