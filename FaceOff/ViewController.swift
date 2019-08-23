@@ -13,15 +13,16 @@ import Vision
 class ViewController: UIViewController {
     
     private var scaledHeight: CGFloat!
+    var selectedImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let image = UIImage(named: "b2049test") else {return}
+        guard let image = selectedImage else {return}
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
         scaledHeight = view.frame.width / image.size.width * image.size.height
-        imageView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: scaledHeight)
+        imageView.frame = CGRect(x: 0, y:(navigationController?.navigationBar.frame.height)!, width: view.frame.width, height: scaledHeight)
         view.addSubview(imageView)
         
         let request = VNDetectFaceRectanglesRequest { (request, err) in
@@ -65,7 +66,7 @@ class ViewController: UIViewController {
         let height = scaledHeight * faceBoundary.boundingBox.height
         let y = scaledHeight * (1 - faceBoundary.boundingBox.origin.y) - height
         let width = self.view.frame.width * faceBoundary.boundingBox.width
-        let boxDimensions = CGRect(x: x, y: y, width: width, height: height)
+        let boxDimensions = CGRect(x: x, y: y, width: width, height: height + (navigationController?.navigationBar.frame.height)!)
         return boxDimensions
     }
     

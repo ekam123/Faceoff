@@ -13,6 +13,7 @@ import Vision
 class RealTimeDetectViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     var predictedObject: UILabel = UILabel()
+    var frameToSend: CVImageBuffer?
     
     private let captureSession = AVCaptureSession()
     private lazy var previewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession)
@@ -41,7 +42,13 @@ class RealTimeDetectViewController: UIViewController, AVCaptureVideoDataOutputSa
 
         
     }
+    override func viewDidAppear(_ animated: Bool) {
+        captureSession.startRunning()
+    }
     
+    override func viewWillDisappear(_ animated: Bool) {
+       self.clearDrawings()
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -82,6 +89,7 @@ class RealTimeDetectViewController: UIViewController, AVCaptureVideoDataOutputSa
             return
         }
         self.detectFace(in: frame)
+        self.frameToSend = frame
         
     }
     
@@ -150,12 +158,6 @@ class RealTimeDetectViewController: UIViewController, AVCaptureVideoDataOutputSa
         //        self.boxes.forEach({gestures in gestures.removeGestureRecognizer(gestures)})
     }
     
-    private func addTapGesture(on faceSelected: UIView) {
-        let touchGesture = UITapGestureRecognizer(target: self, action: #selector(self.onFaceSelected))
-        faceSelected.addGestureRecognizer(touchGesture)
-        faceSelected.isUserInteractionEnabled = true
-        
-    }
     
     @objc func onFaceSelected(_ sender: UITapGestureRecognizer) {
         let alert = UIAlertController(title: "Purchase an item from this character", message: "Press continue to purchase an item worn by this character.", preferredStyle: .alert)
@@ -165,6 +167,56 @@ class RealTimeDetectViewController: UIViewController, AVCaptureVideoDataOutputSa
         
         self.present(alert, animated: true)
     }
+    
+    func captureImage(sampleBuffer: CVImageBuffer?) -> UIImage {
+        guard let sampleBuffer = sampleBuffer else {return UIImage(named: "b2049test")!}
+        CVPixelBufferLockBaseAddress(sampleBuffer, CVPixelBufferLockFlags.readOnly);
+        
+        // Get the number of bytes per row for the pixel buffer
+        let baseAddress = CVPixelBufferGetBaseAddress(sampleBuffer);
+        
+        // Get the number of bytes per row for the pixel buffer
+        let bytesPerRow = CVPixelBufferGetBytesPerRow(sampleBuffer);
+        // Get the pixel buffer width and height
+        let width = CVPixelBufferGetWidth(sampleBuffer);
+        let height = CVPixelBufferGetHeight(sampleBuffer);
+        
+        // Create a device-dependent RGB color space
+        let colorSpace = CGColorSpaceCreateDeviceRGB();
+        
+        // Create a bitmap graphics context with the sample buffer data
+        var bitmapInfo: UInt32 = CGBitmapInfo.byteOrder32Little.rawValue
+        bitmapInfo |= CGImageAlphaInfo.premultipliedFirst.rawValue & CGBitmapInfo.alphaInfoMask.rawValue
+        //let bitmapInfo: UInt32 = CGBitmapInfo.alphaInfoMask.rawValue
+        let context = CGContext.init(data: baseAddress, width: width, height: height, bitsPerComponent: 8, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo)
+        // Create a Quartz image from the pixel data in the bitmap graphics context
+        let quartzImage = context?.makeImage();
+        // Unlock the pixel buffer
+        CVPixelBufferUnlockBaseAddress(sampleBuffer, CVPixelBufferLockFlags.readOnly);
+        
+        // Create an image object from the Quartz image
+        let image = UIImage.init(cgImage: quartzImage!);
+        
+        return (image);
+        
+    }
+    
+    @IBAction func presentLastImage(_ sender: UIBarButtonItem) {
+         captureSession.stopRunning()
+    
+        performSegue(withIdentifier: "viewImage", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "viewImage" {
+            if let nextVC = segue.destination as? ViewController {
+                let image = self.captureImage(sampleBuffer: frameToSend)
+                nextVC.selectedImage = image
+            }
+        }
+        
+    }
+    
     
 }
 
