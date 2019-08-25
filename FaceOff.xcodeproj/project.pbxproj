@@ -15,6 +15,7 @@
 		06AF2FDD230BB5500020BA4A /* coreml_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 06AF2FDC230BB5500020BA4A /* coreml_model.mlmodel */; };
 		06AF2FE1230F36630020BA4A /* RealTimeDetectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF2FE0230F36630020BA4A /* RealTimeDetectViewController.swift */; };
 		06AF2FE3230F4DCE0020BA4A /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 06AF2FE2230F4DCE0020BA4A /* Resnet50.mlmodel */; };
+		06AF2FEB231100F70020BA4A /* testmodel.onnx.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 06AF2FEA231100F70020BA4A /* testmodel.onnx.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		06AF2FDC230BB5500020BA4A /* coreml_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = coreml_model.mlmodel; sourceTree = "<group>"; };
 		06AF2FE0230F36630020BA4A /* RealTimeDetectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeDetectViewController.swift; sourceTree = "<group>"; };
 		06AF2FE2230F4DCE0020BA4A /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
+		06AF2FEA231100F70020BA4A /* testmodel.onnx.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = testmodel.onnx.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				06AF2FE2230F4DCE0020BA4A /* Resnet50.mlmodel */,
+				06AF2FEA231100F70020BA4A /* testmodel.onnx.mlmodel */,
 				06AF2FDC230BB5500020BA4A /* coreml_model.mlmodel */,
 				06AF2FCA230B6A340020BA4A /* AppDelegate.swift */,
 				06AF2FCC230B6A340020BA4A /* ViewController.swift */,
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06AF2FEB231100F70020BA4A /* testmodel.onnx.mlmodel in Sources */,
 				06AF2FE3230F4DCE0020BA4A /* Resnet50.mlmodel in Sources */,
 				06AF2FE1230F36630020BA4A /* RealTimeDetectViewController.swift in Sources */,
 				06AF2FDD230BB5500020BA4A /* coreml_model.mlmodel in Sources */,
