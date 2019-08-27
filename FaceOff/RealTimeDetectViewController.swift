@@ -108,7 +108,7 @@ class RealTimeDetectViewController: UIViewController, AVCaptureVideoDataOutputSa
             DispatchQueue.main.async {
                 guard let results = request.results as? [VNClassificationObservation] else {return}
                 guard let firstObservation = results.first else {return}
-                print(firstObservation.identifier, firstObservation.confidence)
+//                print(firstObservation.identifier, firstObservation.confidence)
                 self.predictedObject.text = firstObservation.identifier
             }
            

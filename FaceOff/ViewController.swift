@@ -12,6 +12,8 @@ import Vision
 
 class ViewController: UIViewController {
     
+
+    
     private var scaledHeight: CGFloat!
     var selectedImage: UIImage?
     
@@ -25,6 +27,15 @@ class ViewController: UIViewController {
         imageView.frame = CGRect(x: 0, y:(navigationController?.navigationBar.frame.height)!, width: view.frame.width, height: scaledHeight)
         view.addSubview(imageView)
         
+//        detectFaces(image: image)
+    
+        let networkManager = NetworkManager()
+        networkManager.makeRequest(image: image)
+        
+        
+    }
+    
+    func detectFaces(image: UIImage) {
         let request = VNDetectFaceRectanglesRequest { (request, err) in
             if let err = err {
                 print("Failed to detect any faces: ", err)
@@ -47,7 +58,7 @@ class ViewController: UIViewController {
                 
             })
         }
-       
+        
         guard let cgImage = image.cgImage else {return}
         DispatchQueue.global(qos: .background).async {
             let handler = VNImageRequestHandler(cgImage: cgImage, options: [ : ])
@@ -57,8 +68,6 @@ class ViewController: UIViewController {
                 print("Failed to perform request:", Err)
             }
         }
-    
-
     }
     
     func faceIdentificationBox(faceBoundary: VNFaceObservation) -> CGRect {
