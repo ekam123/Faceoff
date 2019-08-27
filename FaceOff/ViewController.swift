@@ -29,8 +29,8 @@ class ViewController: UIViewController {
         
 //        detectFaces(image: image)
     
-        let networkManager = NetworkManager()
-        networkManager.makeRequest(image: image)
+//        let networkManager = NetworkManager()
+//        networkManager.makeRequest(image: image)
         
         
     }

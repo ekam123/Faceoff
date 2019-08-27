@@ -13,7 +13,7 @@ import UIKit
 
 class NetworkManager {
     
-    func makeRequest(image: UIImage) {
+    func makeRequest(image: UIImage, completion: @escaping (String?) -> Void) {
         let boundaryString:String = "AaB03x"
         let url = NSURL(string: "http://EkamSingh.local:5000/")!
         let request:NSMutableURLRequest = NSMutableURLRequest(url: url as URL, cachePolicy: NSURLRequest.CachePolicy.reloadIgnoringLocalCacheData, timeoutInterval: 10)
@@ -53,26 +53,25 @@ class NetworkManager {
         
         
         let task = URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
-            
         
             if error != nil { print("POST Request: Communication error: \(error!)") }
             do {
 
-
                 if let json = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
-                    print(json)
+//                    print(json)
+                    guard let result = json["result"] else {return}
+                    completion(result as? String)
                 }
             } catch let error as NSError {
                 print("Failed to load: \(error.localizedDescription)")
             }
-                
-            
-            
-            
-            
         }
         task.resume()
     }
 
+ 
+//    func determineActor(person: String) -> String {
+//        return nil
+//    }
     
 }
