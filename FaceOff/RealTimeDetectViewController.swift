@@ -12,7 +12,7 @@ import Vision
 
 class RealTimeDetectViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
-    let networkManager = NetworkManager()
+//    let networkManager = NetworkManager()
     
     var predictedObject: UILabel = UILabel()
     var frameToSend: CVImageBuffer?
@@ -96,13 +96,13 @@ class RealTimeDetectViewController: UIViewController, AVCaptureVideoDataOutputSa
         self.frameToSend = frame
         
     
-        self.networkManager.makeRequest(image: self.captureImage(sampleBuffer: frame)) { (actorName) in
-            
-            guard let actorName = actorName else {return}
-            DispatchQueue.main.async {
-                self.predictedObject.text = actorName
-            }
-        }
+//        self.networkManager.makeRequest(image: self.captureImage(sampleBuffer: frame)) { (actorName) in
+//
+//            guard let actorName = actorName else {return}
+//            DispatchQueue.main.async {
+//                self.predictedObject.text = actorName
+//            }
+//        }
         
     }
     
@@ -122,7 +122,7 @@ class RealTimeDetectViewController: UIViewController, AVCaptureVideoDataOutputSa
                 guard let results = request.results as? [VNClassificationObservation] else {return}
                 guard let firstObservation = results.first else {return}
 //                print(firstObservation.identifier, firstObservation.confidence)
-//                self.predictedObject.text = firstObservation.identifier
+                self.predictedObject.text = firstObservation.identifier
             }
            
         }

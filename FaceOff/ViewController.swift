@@ -16,9 +16,16 @@ class ViewController: UIViewController {
     
     private var scaledHeight: CGFloat!
     var selectedImage: UIImage?
+    var labelName: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        labelName = UILabel()
+        labelName.frame = CGRect(x: view.center.x - 100 , y: view.frame.height - 50, width: 200, height: 30)
+        labelName.backgroundColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
+        labelName.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        view.addSubview(labelName)
         
         guard let image = selectedImage else {return}
         let imageView = UIImageView(image: image)
@@ -29,8 +36,14 @@ class ViewController: UIViewController {
         
 //        detectFaces(image: image)
     
-//        let networkManager = NetworkManager()
-//        networkManager.makeRequest(image: image)
+        let networkManager = NetworkManager()
+        networkManager.makeRequest(image: image) { (actorName) in
+            
+                        guard let actorName = actorName else {return}
+                        DispatchQueue.main.async {
+                            self.labelName.text = actorName
+                        }
+                    }
         
         
     }
