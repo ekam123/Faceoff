@@ -74,4 +74,10 @@ class NetworkManager {
 //        return nil
 //    }
     
+    
+    
+    func testGoogleCloudApp() {
+        let url = URL(string: "https://faceoff-vision-app.appspot.com/")
+    }
+    
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		067C3594231D70DF00986DF0 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 067C3593231D70DE00986DF0 /* TestData.swift */; };
 		06AF2FCB230B6A340020BA4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF2FCA230B6A340020BA4A /* AppDelegate.swift */; };
 		06AF2FCD230B6A340020BA4A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AF2FCC230B6A340020BA4A /* ViewController.swift */; };
 		06AF2FD0230B6A340020BA4A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06AF2FCE230B6A340020BA4A /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		067C3593231D70DE00986DF0 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		06AF2FC7230B6A340020BA4A /* FaceOff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceOff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06AF2FCA230B6A340020BA4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06AF2FCC230B6A340020BA4A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				06AF2FCA230B6A340020BA4A /* AppDelegate.swift */,
 				06AF2FCC230B6A340020BA4A /* ViewController.swift */,
 				06AF2FEC2313820F0020BA4A /* NetworkManager.swift */,
+				067C3593231D70DE00986DF0 /* TestData.swift */,
 				06AF2FCE230B6A340020BA4A /* Main.storyboard */,
 				06AF2FE0230F36630020BA4A /* RealTimeDetectViewController.swift */,
 				06AF2FD1230B6A3B0020BA4A /* Assets.xcassets */,
@@ -152,6 +155,7 @@
 				06AF2FED2313820F0020BA4A /* NetworkManager.swift in Sources */,
 				06AF2FDD230BB5500020BA4A /* coreml_model.mlmodel in Sources */,
 				06AF2FCD230B6A340020BA4A /* ViewController.swift in Sources */,
+				067C3594231D70DF00986DF0 /* TestData.swift in Sources */,
 				06AF2FCB230B6A340020BA4A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
