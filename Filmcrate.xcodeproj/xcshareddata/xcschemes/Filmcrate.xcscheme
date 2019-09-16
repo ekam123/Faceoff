@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "06AF2FC6230B6A340020BA4A"
-               BuildableName = "FaceOff.app"
-               BlueprintName = "FaceOff"
-               ReferencedContainer = "container:FaceOff.xcodeproj">
+               BuildableName = "Filmcrate.app"
+               BlueprintName = "Filmcrate"
+               ReferencedContainer = "container:Filmcrate.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "06AF2FC6230B6A340020BA4A"
-            BuildableName = "FaceOff.app"
-            BlueprintName = "FaceOff"
-            ReferencedContainer = "container:FaceOff.xcodeproj">
+            BuildableName = "Filmcrate.app"
+            BlueprintName = "Filmcrate"
+            ReferencedContainer = "container:Filmcrate.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "06AF2FC6230B6A340020BA4A"
-            BuildableName = "FaceOff.app"
-            BlueprintName = "FaceOff"
-            ReferencedContainer = "container:FaceOff.xcodeproj">
+            BuildableName = "Filmcrate.app"
+            BlueprintName = "Filmcrate"
+            ReferencedContainer = "container:Filmcrate.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "06AF2FC6230B6A340020BA4A"
-            BuildableName = "FaceOff.app"
-            BlueprintName = "FaceOff"
-            ReferencedContainer = "container:FaceOff.xcodeproj">
+            BuildableName = "Filmcrate.app"
+            BlueprintName = "Filmcrate"
+            ReferencedContainer = "container:Filmcrate.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

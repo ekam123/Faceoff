@@ -21,7 +21,7 @@
 
 /* Begin PBXFileReference section */
 		067C3593231D70DE00986DF0 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
-		06AF2FC7230B6A340020BA4A /* FaceOff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceOff.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		06AF2FC7230B6A340020BA4A /* Filmcrate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Filmcrate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06AF2FCA230B6A340020BA4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06AF2FCC230B6A340020BA4A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		06AF2FCF230B6A340020BA4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 		06AF2FBE230B6A340020BA4A = {
 			isa = PBXGroup;
 			children = (
-				06AF2FC9230B6A340020BA4A /* FaceOff */,
+				06AF2FC9230B6A340020BA4A /* Filmcrate */,
 				06AF2FC8230B6A340020BA4A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,12 +56,12 @@
 		06AF2FC8230B6A340020BA4A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				06AF2FC7230B6A340020BA4A /* FaceOff.app */,
+				06AF2FC7230B6A340020BA4A /* Filmcrate.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		06AF2FC9230B6A340020BA4A /* FaceOff */ = {
+		06AF2FC9230B6A340020BA4A /* Filmcrate */ = {
 			isa = PBXGroup;
 			children = (
 				06AF2FE2230F4DCE0020BA4A /* Resnet50.mlmodel */,
@@ -76,15 +76,15 @@
 				06AF2FD3230B6A3B0020BA4A /* LaunchScreen.storyboard */,
 				06AF2FD6230B6A3B0020BA4A /* Info.plist */,
 			);
-			path = FaceOff;
+			path = Filmcrate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		06AF2FC6230B6A340020BA4A /* FaceOff */ = {
+		06AF2FC6230B6A340020BA4A /* Filmcrate */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 06AF2FD9230B6A3B0020BA4A /* Build configuration list for PBXNativeTarget "FaceOff" */;
+			buildConfigurationList = 06AF2FD9230B6A3B0020BA4A /* Build configuration list for PBXNativeTarget "Filmcrate" */;
 			buildPhases = (
 				06AF2FC3230B6A340020BA4A /* Sources */,
 				06AF2FC4230B6A340020BA4A /* Frameworks */,
@@ -94,9 +94,9 @@
 			);
 			dependencies = (
 			);
-			name = FaceOff;
+			name = Filmcrate;
 			productName = FaceOff;
-			productReference = 06AF2FC7230B6A340020BA4A /* FaceOff.app */;
+			productReference = 06AF2FC7230B6A340020BA4A /* Filmcrate.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -114,7 +114,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 06AF2FC2230B6A340020BA4A /* Build configuration list for PBXProject "FaceOff" */;
+			buildConfigurationList = 06AF2FC2230B6A340020BA4A /* Build configuration list for PBXProject "Filmcrate" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -127,7 +127,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				06AF2FC6230B6A340020BA4A /* FaceOff */,
+				06AF2FC6230B6A340020BA4A /* Filmcrate */,
 			);
 		};
 /* End PBXProject section */
@@ -304,7 +304,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6356UMD9VX;
-				INFOPLIST_FILE = FaceOff/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Filmcrate/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -322,7 +322,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6356UMD9VX;
-				INFOPLIST_FILE = FaceOff/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Filmcrate/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -337,7 +337,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		06AF2FC2230B6A340020BA4A /* Build configuration list for PBXProject "FaceOff" */ = {
+		06AF2FC2230B6A340020BA4A /* Build configuration list for PBXProject "Filmcrate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				06AF2FD7230B6A3B0020BA4A /* Debug */,
@@ -346,7 +346,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		06AF2FD9230B6A3B0020BA4A /* Build configuration list for PBXNativeTarget "FaceOff" */ = {
+		06AF2FD9230B6A3B0020BA4A /* Build configuration list for PBXNativeTarget "Filmcrate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				06AF2FDA230B6A3B0020BA4A /* Debug */,
